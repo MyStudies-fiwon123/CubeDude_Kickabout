@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Models/toys/Bear/bear.dae" type="PackedScene" id=1]
+
+[node name="Bear" instance=ExtResource( 1 )]
+

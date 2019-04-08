@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Models/Cubedude/CubeDude.dae" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Cubedude.gd" type="Script" id=2]
+[ext_resource path="res://Models/Cubedude/CubeDude.material" type="Material" id=3]
+[ext_resource path="res://Models/Particles/star.mesh" type="ArrayMesh" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.574375
+height = 0.956954
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 3
+emission_point_count = 1
+spread = 180.0
+gravity = Vector3( 0, 9.8, 0 )
+angular_velocity = 4.5559e-041
+radial_accel = 10.0
+scale = 0.5
+
+[node name="Cubedude" groups=[
+"celebrant",
+] instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="Cube Dube" parent="Armature/Skeleton" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="Particles" type="Particles" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02202, 0 )
+emitting = false
+amount = 64
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.5
+randomness = 1.0
+process_material = SubResource( 2 )
+draw_pass_1 = ExtResource( 4 )
+
